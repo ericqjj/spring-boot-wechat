@@ -1,8 +1,8 @@
 # spring-boot-wechat
 
- Spring Boot for WeChat development
+ 使用spring-boot + mybatis-plus 进行微信公众号开发，实现restful接口。其中也涉及到页面开发，使用微信官网UI作为前端样式标准。主要实现微信相关操作自动化完成。
  
- <br/> *使用spring-boot 进行微信公众号开发，其中会使用到jersey依赖进行开发restful风格接口。其中也涉及到页面开发，使用微信官网UI作为前端样式标准。*
+ <br/> *使用spring-boot + mybatis-plus 进行微信公众号开发，实现restful接口。其中也涉及到页面开发，使用微信官网UI作为前端样式标准。*
  
 ## 主要实现功能：
 1. 微信支付；
