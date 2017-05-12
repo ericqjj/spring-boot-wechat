@@ -1,0 +1,56 @@
+#server
+server:
+  port: 8081
+  address: localhost
+# jdbc_config
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/wechat_db?characterEncoding=utf8
+    username: root
+    password: 111111
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  # HTTP ENCODING
+  http:
+    encoding.charset: UTF-8
+    encoding.enable: true
+    encoding.force: true
+# mybatis_config
+mybatis-plus:
+    typeAliasesPackage: com.wechat.entity
+    mapper-locations: classpath:com/wechat/mapper/xml/*.xml
+    global-config:
+        id-type: 0
+        field-strategy: 2
+        auto-set-db-type: true
+        db-column-underline: true
+        refresh-mapper: false
+        metaObjectHandler: com.framework.core.handler.MyMetaObjectHandler
+    configuration:
+        map-underscore-to-camel-case: true
+        cache-enabled: false
+
+#log
+logging:
+  config: classpath:logback.xml
+
+security:
+  basic:
+    enabled: false
+liquibase:
+  enabled: true
+  change-log: classpath:/db/changelog/db.changelog-master.yaml
