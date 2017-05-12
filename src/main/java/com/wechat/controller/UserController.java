@@ -1,6 +1,7 @@
 package com.wechat.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.wechat.common.constants.PathRoute;
 import com.wechat.common.util.ResultResponse;
 import com.wechat.entity.User;
 import com.wechat.service.UserService;
@@ -17,7 +18,7 @@ import java.util.List;
  * Created by hztps on 2017/5/11.
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping(PathRoute.USER)
 public class UserController {
 
     private Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -29,7 +30,7 @@ public class UserController {
      * 查询用户列表
      * @return
      */
-    @RequestMapping("/list")
+    @GetMapping(PathRoute.USER_LIST)
     public Object userList(@ModelAttribute User user) {
         List<User> userList = userService.selectList(new EntityWrapper<>(user));
         return ResultResponse.success("查询用户列表成功", userList);
@@ -42,7 +43,7 @@ public class UserController {
      * @param userPassword
      * @return
      */
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @PostMapping(PathRoute.USER_ADD)
     public Object addUser(@RequestParam("userName") @NotBlank(message = "用户名不能为空") String userName,
                           @RequestParam("userPassword") @NotBlank(message = "用户密码不能为空") String userPassword) {
         try {
